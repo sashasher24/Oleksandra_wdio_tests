@@ -9,7 +9,6 @@ npm run wdio
 
 Automated scenarios are:
 - _Hover page_:
-    - 'View Profile' button should not be displayed by default
     - 'View Profile' button should be displayed for each profile on hover (checks each user element)
     - Can click 'View Profile' button for each profile (checks each user element)
 - _Login page_:

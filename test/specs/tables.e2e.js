@@ -1,32 +1,33 @@
-const { assert } = require('chai')
+const { assert } = require("chai")
 
-const TablesPage = require('../pageobjects/tables.page')
+const TablesPage = require("../pageobjects/tables.page")
 
-describe('Tables page tests', async () => {
-    const sortOrders = ['asc', 'desc']
+describe("Tables page tests", async () => {
+    const sortOrders = ["asc", "desc"]
+    
     beforeEach(async () => {
         await TablesPage.open()
         await TablesPage.assertThePageUrl()
     })
 
-    it(`The table should be displayed`, async () => {
-        const isDisplayed = await TablesPage.table.isDisplayed();
-        assert.isTrue(isDisplayed, 'Table is not displayed');
+    it("The table should be displayed", async () => {
+        const isDisplayed = await TablesPage.table.isDisplayed()
+        assert.isTrue(isDisplayed, "Table is not displayed")
     })
 
-    it('Table column`s headers should be clickable', async () => {
-        const headers = await TablesPage.tableColumnHeaders;
+    it("Table column`s headers should be clickable", async () => {
+        const headers = await TablesPage.tableColumnHeaders
     
         for (let i = 0; i < headers.length; i++) {
-            const header = headers[i];
-            const isClickable = await header.isDisplayed() && await header.isEnabled();
+            const header = headers[i]
+            const isClickable = await header.isDisplayed() && await header.isEnabled()
             const errorMessage = `Column header at index ${i} with text "${await header.getText()}" is not clickable.`
             
             if (!isClickable) {
-                console.error(errorMessage);
+                console.error(errorMessage)
             }
 
-            assert.isTrue(isClickable, errorMessage);
+            assert.isTrue(isClickable, errorMessage)
         }
     })
 
@@ -38,5 +39,5 @@ describe('Tables page tests', async () => {
                 await TablesPage.sortTableByColumnIndex(index, order, name)
             }
         })
-    });
+    })
 })

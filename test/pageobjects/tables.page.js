@@ -1,33 +1,33 @@
-const { $, $$ } = require('@wdio/globals')
-const { expect } = require('chai');
+const { $, $$ } = require("@wdio/globals")
+const { expect } = require("chai")
 
-const Page = require('./page');
+const Page = require("./page")
 
 class TablesPage extends Page {
     get table () {
-        return $('#table1');
+        return $("#table1")
     }
 
     get tableColumnHeaders () {
-        return $('#table1').$$('th');
+        return $("#table1").$$("th")
     }
 
     open () {
-        return super.open('tables');
+        return super.open("tables")
     }
 
     async assertThePageUrl() {
-        const expectedUrl = 'https://the-internet.herokuapp.com/tables';
-        return super.assertThePageUrl(expectedUrl);
+        const expectedPath = "/tables"
+        return super.assertThePageUrl(expectedPath)
     }
 
     async getTableColumnValues (columnIndex) {
         const tableColumnValues = []
     
-        const tableBody = await $$('table')[0].$('tbody')
+        const tableBody = await $$("table")[0].$("tbody")
 
-        for(const row of await tableBody.$$('tr')) {
-            tableColumnValues.push(await row.$$('td')[columnIndex].getText())
+        for(const row of await tableBody.$$("tr")) {
+            tableColumnValues.push(await row.$$("td")[columnIndex].getText())
         }
 
         return tableColumnValues
@@ -36,8 +36,8 @@ class TablesPage extends Page {
     async getTableColumnsNames () {
         const names = []
 
-        const tableHeader = await $$('table')[0].$('thead')
-        for(const head of await tableHeader.$$('th')) {
+        const tableHeader = await $$("table")[0].$("thead")
+        for(const head of await tableHeader.$$("th")) {
             names.push(await head.getText())
         }
 
@@ -48,18 +48,18 @@ class TablesPage extends Page {
     async sortTableByColumnIndex (index, order, name) {
         let expectedColumnValues = await this.getTableColumnValues(index)
 
-        if(name === 'Due') {
+        if(name === "Due") {
             expectedColumnValues.sort((a, b) => {
-                const numA = parseFloat(a.replace('$', ''));
-                const numB = parseFloat(b.replace('$', ''));
+                const numA = parseFloat(a.replace("$", ""))
+                const numB = parseFloat(b.replace("$", ""))
                 
-                return numA - numB;
+                return numA - numB
             })
         } else {
             expectedColumnValues.sort((a, b) => a.localeCompare(b))
         }
 
-        if(order === 'asc') {
+        if(order === "asc") {
             await this.tableColumnHeaders[index].click()
         } else {
             expectedColumnValues = expectedColumnValues.reverse()
@@ -67,11 +67,11 @@ class TablesPage extends Page {
         }
 
         const actualColumnValues = await this.getTableColumnValues(index)
-        console.log('exp: ', expectedColumnValues)
-        console.log('act: ', actualColumnValues)
+        console.log("exp: ", expectedColumnValues)
+        console.log("act: ", actualColumnValues)
 
-        expect(expectedColumnValues).to.deep.equal(actualColumnValues);
+        expect(expectedColumnValues).to.deep.equal(actualColumnValues)
     }
 }
 
-module.exports = new TablesPage();
+module.exports = new TablesPage()
