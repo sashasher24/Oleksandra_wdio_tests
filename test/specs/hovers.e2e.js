@@ -4,7 +4,7 @@ const { browser } = require("@wdio/globals")
 const { BASE_URL } = require("../../utils/constants")
 
 const HoversPage = require("../pageobjects/hovers.page")
-const UserPage = require("../pageobjects/userPage.page")
+const UserPage = require("../pageobjects/user-page.page")
 
 describe("Hovers page profiles", async () => {
     beforeEach(async () => {
