@@ -20,7 +20,7 @@ describe("Hovers page profiles", async () => {
         }
     })
 
-    it("Can click 'View Profile' button for each profile", async () => {
+    it("Can click 'View Profile' button for each profile and verify urls", async () => {
         const userElements = await HoversPage.userElements
 
         for (const [index, ] of userElements.entries()) {

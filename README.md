@@ -1,4 +1,11 @@
-# Intro
+## Installation ⚒️
+Make sure you have node v.16 installed and used
+
+Then run: 
+```bash
+npm install
+```
+
 
 ## Tasks 1 - 3
 Tests for tasks 1 - 3 can be run from the root folder using script:
@@ -10,7 +17,7 @@ npm run wdio
 Automated scenarios are:
 - _Hover page_:
     - 'View Profile' button should be displayed for each profile on hover (checks each user element)
-    - Can click 'View Profile' button for each profile (checks each user element)
+    - Can click 'View Profile' button for each profile and verify urls (checks each user element)
 - _Login page_:
     - User should be able to login through the login form
     - User should be able to logout from the secure page
