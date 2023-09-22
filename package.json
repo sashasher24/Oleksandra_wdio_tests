@@ -1,0 +1,19 @@
+{
+  "name": "oleksandra_wdio_tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "wdio": "wdio run ./wdio.conf.js",
+    "separate-tasks:run": "node ./utils/tasks-4-and-5.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/cli": "^8.16.11",
+    "@wdio/local-runner": "^8.16.11",
+    "@wdio/mocha-framework": "^8.16.11",
+    "@wdio/spec-reporter": "^8.16.9",
+    "chai": "^4.3.8"
+  }
+}
