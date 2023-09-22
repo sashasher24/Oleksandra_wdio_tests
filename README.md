@@ -1,5 +1,5 @@
 ## Installation ⚒️
-Make sure you have node v.16 installed and used
+Make sure you have node v.16+ installed and used
 
 Then run: 
 ```bash
