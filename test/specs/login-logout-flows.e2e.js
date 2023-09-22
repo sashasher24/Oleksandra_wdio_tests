@@ -16,7 +16,7 @@ describe("Login/Logout flows", () => {
         await SecurePage.assertLogoutButtonIsDisplayedAndClickable()
     })
 
-    it("User should be able to logout through the login form", async () => {
+    it("User should be able to logout from the secure page", async () => {
         await LoginPage.login(USERNAME, PASSWORD)
         await SecurePage.logout()
         await LoginPage.assertThePageUrl()
