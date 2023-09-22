@@ -1,4 +1,4 @@
-const { assert } = require("chai")
+const { assert, expect } = require("chai")
 
 const TablesPage = require("../pageobjects/tables.page")
 
@@ -29,6 +29,31 @@ describe("Tables page tests", async () => {
 
             assert.isTrue(isClickable, errorMessage)
         }
+    })
+
+    it("`Edit` buttons should be clickable", async () => {
+        const buttons = await TablesPage.editButtons
+
+        for(const [index, button] of buttons.entries()) {
+            const isClickable = await button.isDisplayed() && await button.isEnabled()
+            assert.isTrue(isClickable, `Edit button #${index + 1} is not clickable`)
+        }
+    })
+
+    it("`Delete` buttons should be clickable", async () => {
+        const buttons = await TablesPage.deleteButtons
+
+        for(const [index, button] of buttons.entries()) {
+            const isClickable = await button.isDisplayed() && await button.isEnabled()
+            assert.isTrue(isClickable, `Delete button #${index + 1} is not clickable`)
+        }
+    })
+
+    it("Headers have correct values", async () => {
+        const expectedHeaders = ["Last Name", "First Name", "Email", "Due", "Web Site", "Action"]
+        const actualHeaders = await TablesPage.getTableColumnsNames()
+
+        expect(actualHeaders).to.eql(expectedHeaders)
     })
 
     sortOrders.forEach(order => {

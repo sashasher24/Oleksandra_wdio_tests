@@ -12,6 +12,14 @@ class TablesPage extends Page {
         return $("#table1").$$("th")
     }
 
+    get editButtons () {
+        return $$("a[href*=\"edit\"]")
+    }
+
+    get deleteButtons () {
+        return $$("a[href*=\"delete\"]")
+    }
+
     open () {
         return super.open("tables")
     }
